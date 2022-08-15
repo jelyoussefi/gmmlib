@@ -88,6 +88,7 @@ bool GmmLib::Logger::GmmLogInit()
 
     if(Utility::GmmUMDReadRegistryFullPath(GMM_LOG_REG_KEY_SUB_PATH, GMM_LOG_LEVEL_REGKEY, &regkeyVal))
     {
+        printf("----------------- %s\n", __FUNCTION__);
         switch(static_cast<GmmLogLevel>(regkeyVal))
         {
             case Trace:
@@ -178,6 +179,7 @@ bool GmmLib::Logger::GmmLogInit()
 #else
 	    LogFilePath = std::string(".//") + std::string(GMM_LOG_FILENAME) + "" + ProcName + "_" + PidStr;
 #endif
+
             // Create logger
             SpdLogger = spdlog::rotating_logger_mt(GMM_LOGGER_NAME,
                                                    LogFilePath,
@@ -199,6 +201,7 @@ bool GmmLib::Logger::GmmLogInit()
             SpdLogger   = spdlog::android_logger(GMM_LOGGER_NAME, GMM_LOG_TAG);
 #elif defined(__linux__)
             // Log to syslog
+	    std::cout<<"============================== "<<GMM_LOGGER_NAME<<std::endl;
             SpdLogger = spdlog::syslog_logger(GMM_LOGGER_NAME, GMM_LOG_TAG, 1 /*Log Pid*/);
 #else
             __GMM_ASSERT(0);
@@ -225,11 +228,11 @@ bool GmmLib::Logger::GmmLogInit()
 /////////////////////////////////////////////////////////////////////////////////////
 GmmLib::Logger::Logger()
     : LogMethod(ToOSLog),
-      LogLevel(spdlog::level::off)
+      LogLevel(spdlog::level::trace)
 {
     if(!GmmLogInit())
     {
-        spdlog::set_level(spdlog::level::off);
+        spdlog::set_level(spdlog::level::trace);
     }
 }
 
@@ -271,6 +274,7 @@ extern "C" void GMM_STDCALL GmmLibLogging(GmmLogLevel Level, const char *str, ..
 
     if(GmmLoggerPerProc.SpdLogger)
     {
+
         va_start(args, str);
 
 #if _WIN32
@@ -289,7 +293,7 @@ extern "C" void GMM_STDCALL GmmLibLogging(GmmLogLevel Level, const char *str, ..
 #else
             vsnprintf(temp, length + 1, str, args);
 #endif
-
+	printf("%s\n", temp);
             switch(Level)
             {
                 case Trace:

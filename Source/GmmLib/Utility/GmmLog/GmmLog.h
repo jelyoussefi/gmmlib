@@ -22,7 +22,10 @@ OTHER DEALINGS IN THE SOFTWARE.
 
 #pragma once
 
+#define FALSE false
+
 #if (_DEBUG || _RELEASE_INTERNAL) && !__GMM_KMD__
+
     // Not doing #if__cplusplus >= 201103L check because partial C++11 support may
     // work for this. We also want to catch C++11 unavailability due to not setting
     // compiler options.

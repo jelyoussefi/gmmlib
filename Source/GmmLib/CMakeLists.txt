@@ -197,6 +197,9 @@ if(DEFINED UFO_DRIVER_OPTIMIZATION_LEVEL)
     endif()
 endif()
 
+add_definitions(-D_DEBUG)
+add_definitions(-DSPDLOG_ENABLE_SYSLOG)
+
 set(HEADERS_
 	${BS_DIR_GMMLIB}/CachePolicy/GmmCachePolicyConditionals.h
 	${BS_DIR_GMMLIB}/CachePolicy/GmmCachePolicyResourceUsageDefinitions.h

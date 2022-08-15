@@ -35,6 +35,7 @@ OTHER DEALINGS IN THE SOFTWARE.
 /////////////////////////////////////////////////////////////////////////////////////
 GMM_PTE_CACHE_CONTROL_BITS GMM_STDCALL GmmCachePolicyGetPteType(void *pLibContext, GMM_RESOURCE_USAGE_TYPE Usage)
 {
+    GMM_DPF_ENTER;
     GMM_LIB_CONTEXT *pGmmLibContext = (GMM_LIB_CONTEXT *)pLibContext;
     return pGmmLibContext->GetCachePolicyObj()->CachePolicyGetPteType(Usage);
 }
@@ -49,6 +50,7 @@ GMM_PTE_CACHE_CONTROL_BITS GMM_STDCALL GmmCachePolicyGetPteType(void *pLibContex
 /////////////////////////////////////////////////////////////////////////////////////
 uint8_t GMM_STDCALL GmmCachePolicyIsUsagePTECached(void *pLibContext, GMM_RESOURCE_USAGE_TYPE Usage)
 {
+    GMM_DPF_ENTER;
     GMM_LIB_CONTEXT *pGmmLibContext = (GMM_LIB_CONTEXT *)pLibContext;
     return pGmmLibContext->GetCachePolicyObj()->CachePolicyIsUsagePTECached(Usage);
 }
@@ -62,6 +64,7 @@ uint8_t GMM_STDCALL GmmCachePolicyIsUsagePTECached(void *pLibContext, GMM_RESOUR
 /////////////////////////////////////////////////////////////////////////////////////
 uint8_t GMM_STDCALL GmmGetSurfaceStateL1CachePolicy(void *pLibContext, GMM_RESOURCE_USAGE_TYPE Usage)
 {
+    GMM_DPF_ENTER;
     GMM_LIB_CONTEXT *pGmmLibContext = (GMM_LIB_CONTEXT *)pLibContext;
     return pGmmLibContext->GetCachePolicyElement(Usage).L1CC;
 }
@@ -75,6 +78,7 @@ uint8_t GMM_STDCALL GmmGetSurfaceStateL1CachePolicy(void *pLibContext, GMM_RESOU
 /////////////////////////////////////////////////////////////////////////////////////
 GMM_RESOURCE_USAGE_TYPE GMM_STDCALL GmmCachePolicyGetResourceUsage(GMM_RESOURCE_INFO *pResInfo)
 {
+    GMM_DPF_ENTER;
     __GMM_ASSERT(pResInfo);
     return pResInfo->GetCachePolicyUsage();
 }
@@ -88,6 +92,7 @@ GMM_RESOURCE_USAGE_TYPE GMM_STDCALL GmmCachePolicyGetResourceUsage(GMM_RESOURCE_
 /////////////////////////////////////////////////////////////////////////////////////
 void GMM_STDCALL GmmCachePolicyOverrideResourceUsage(GMM_RESOURCE_INFO *pResInfo, GMM_RESOURCE_USAGE_TYPE Usage)
 {
+    GMM_DPF_ENTER;
     pResInfo->OverrideCachePolicyUsage(Usage);
 }
 
@@ -103,6 +108,7 @@ void GMM_STDCALL GmmCachePolicyOverrideResourceUsage(GMM_RESOURCE_INFO *pResInfo
 /////////////////////////////////////////////////////////////////////////////////////
 MEMORY_OBJECT_CONTROL_STATE GMM_STDCALL GmmCachePolicyGetMemoryObject(void *pLibContext, GMM_RESOURCE_INFO *pResInfo, GMM_RESOURCE_USAGE_TYPE Usage)
 {
+    GMM_DPF_ENTER;
     GMM_LIB_CONTEXT *pGmmLibContext = (GMM_LIB_CONTEXT *)pLibContext;
     return pGmmLibContext->GetCachePolicyObj()->CachePolicyGetMemoryObject(pResInfo, Usage);
 }
@@ -119,6 +125,7 @@ MEMORY_OBJECT_CONTROL_STATE GMM_STDCALL GmmCachePolicyGetMemoryObject(void *pLib
 /////////////////////////////////////////////////////////////////////////////////////
 MEMORY_OBJECT_CONTROL_STATE GMM_STDCALL GmmCachePolicyGetOriginalMemoryObject(void *pLibContext, GMM_RESOURCE_INFO *pResInfo)
 {
+    GMM_DPF_ENTER;
     GMM_LIB_CONTEXT *pGmmLibContext = (GMM_LIB_CONTEXT *)pLibContext;
     return pGmmLibContext->GetCachePolicyObj()->CachePolicyGetOriginalMemoryObject(pResInfo);
 }
@@ -133,6 +140,7 @@ MEMORY_OBJECT_CONTROL_STATE GMM_STDCALL GmmCachePolicyGetOriginalMemoryObject(vo
 /////////////////////////////////////////////////////////////////////////////////////
 GMM_GFX_MEMORY_TYPE GmmGetWantedMemoryType(void *pLibContext, GMM_CACHE_POLICY_ELEMENT CachePolicy)
 {
+    GMM_DPF_ENTER;
     GMM_LIB_CONTEXT *pGmmLibContext = (GMM_LIB_CONTEXT *)pLibContext;
     return pGmmLibContext->GetCachePolicyObj()->GetWantedMemoryType(CachePolicy);
 }
@@ -144,6 +152,7 @@ GMM_GFX_MEMORY_TYPE GmmGetWantedMemoryType(void *pLibContext, GMM_CACHE_POLICY_E
 /////////////////////////////////////////////////////////////////////////////////////
 uint32_t GMM_STDCALL GmmCachePolicyGetMaxMocsIndex(void *pLibContext)
 {
+    GMM_DPF_ENTER;
     GMM_LIB_CONTEXT *           pGmmLibContext = (GMM_LIB_CONTEXT *)pLibContext;
     GMM_CACHE_POLICY *          pCachePolicy   = pGmmLibContext->GetCachePolicyObj();
     GmmLib::GmmGen9CachePolicy *ptr            = static_cast<GmmLib::GmmGen9CachePolicy *>(pCachePolicy);
@@ -157,6 +166,7 @@ uint32_t GMM_STDCALL GmmCachePolicyGetMaxMocsIndex(void *pLibContext)
 /////////////////////////////////////////////////////////////////////////////////////
 uint32_t GMM_STDCALL GmmCachePolicyGetMaxL1HdcMocsIndex(void *pLibContext)
 {
+    GMM_DPF_ENTER;
     GMM_LIB_CONTEXT *           pGmmLibContext = (GMM_LIB_CONTEXT *)pLibContext;
     GMM_CACHE_POLICY *          pCachePolicy   = pGmmLibContext->GetCachePolicyObj();
     GmmLib::GmmGen9CachePolicy *ptr            = static_cast<GmmLib::GmmGen9CachePolicy *>(pCachePolicy);
@@ -171,6 +181,7 @@ uint32_t GMM_STDCALL GmmCachePolicyGetMaxL1HdcMocsIndex(void *pLibContext)
 /////////////////////////////////////////////////////////////////////////////////////
 uint32_t GMM_STDCALL GmmCachePolicyGetMaxSpecialMocsIndex(void *pLibContext)
 {
+    GMM_DPF_ENTER;
     GMM_LIB_CONTEXT * pGmmLibContext = (GMM_LIB_CONTEXT *)pLibContext;
     GMM_CACHE_POLICY *pCachePolicy   = pGmmLibContext->GetCachePolicyObj();
     return pCachePolicy->GetMaxSpecialMocsIndex();

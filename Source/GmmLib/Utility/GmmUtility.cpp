@@ -75,6 +75,7 @@ extern const SWIZZLE_DESCRIPTOR INTEL_64KB_UNDEFINED_64_128bpp = {0x7E0F, 0x81F0
 //-----------------------------------------------------------------------------
 uint8_t GMM_STDCALL GmmIsRedecribedPlanes(GMM_RESOURCE_INFO *pGmmResource)
 {
+    GMM_DPF_ENTER;
     return pGmmResource->GetResFlags().Info.RedecribedPlanes;
 }
 
@@ -92,6 +93,7 @@ uint8_t GMM_STDCALL GmmIsRedecribedPlanes(GMM_RESOURCE_INFO *pGmmResource)
 //-----------------------------------------------------------------------------
 uint8_t GMM_STDCALL GmmGetLosslessCompressionType(void *pLibContext, GMM_RESOURCE_FORMAT Format)
 {
+    GMM_DPF_ENTER;
     GMM_LIB_CONTEXT *pGmmLibContext = (GMM_LIB_CONTEXT *)pLibContext;
     __GMM_ASSERT((Format > GMM_FORMAT_INVALID) && (Format < GMM_RESOURCE_FORMATS));
 
@@ -112,6 +114,7 @@ uint8_t GMM_STDCALL GmmGetLosslessCompressionType(void *pLibContext, GMM_RESOURC
 //-----------------------------------------------------------------------------
 uint8_t GMM_STDCALL GmmIsUVPacked(GMM_RESOURCE_FORMAT Format)
 {
+    GMM_DPF_ENTER;
     uint8_t Status = 0;
 
     switch(Format)
@@ -142,6 +145,7 @@ uint8_t GMM_STDCALL GmmIsUVPacked(GMM_RESOURCE_FORMAT Format)
 /////////////////////////////////////////////////////////////////////////////////////
 bool GMM_STDCALL GmmIsYUVFormatLCUAligned(GMM_RESOURCE_FORMAT Format)
 {
+    GMM_DPF_ENTER;
     bool Status = 0;
 
     switch(Format)
@@ -178,6 +182,7 @@ bool GMM_STDCALL GmmIsYUVFormatLCUAligned(GMM_RESOURCE_FORMAT Format)
 //-----------------------------------------------------------------------------
 uint8_t GMM_STDCALL GmmIsYUVPacked(GMM_RESOURCE_FORMAT Format)
 {
+    GMM_DPF_ENTER;
     uint8_t Status = 0;
 
     switch(Format)
@@ -221,6 +226,7 @@ uint8_t GMM_STDCALL GmmIsYUVPacked(GMM_RESOURCE_FORMAT Format)
 //-----------------------------------------------------------------------------
 uint8_t GMM_STDCALL GmmIsPlanar(GMM_RESOURCE_FORMAT Format)
 {
+    GMM_DPF_ENTER;
     uint8_t Status = 0;
 
     switch(Format)
@@ -274,6 +280,7 @@ uint8_t GMM_STDCALL GmmIsPlanar(GMM_RESOURCE_FORMAT Format)
 //-----------------------------------------------------------------------------
 uint8_t GMM_STDCALL GmmIsReconstructableSurface(GMM_RESOURCE_FORMAT Format)
 {
+    GMM_DPF_ENTER;
     uint8_t Status = 0;
 
     switch(Format)
@@ -314,6 +321,8 @@ uint8_t GMM_STDCALL GmmIsReconstructableSurface(GMM_RESOURCE_FORMAT Format)
 //-----------------------------------------------------------------------------
 uint8_t GMM_STDCALL GmmIsP0xx(GMM_RESOURCE_FORMAT Format)
 {
+
+    GMM_DPF_ENTER;
     uint8_t Status = 0;
 
     switch(Format)
@@ -345,6 +354,7 @@ uint8_t GMM_STDCALL GmmIsP0xx(GMM_RESOURCE_FORMAT Format)
 //-----------------------------------------------------------------------------
 uint8_t GMM_STDCALL GmmIsCompressed(void *pLibContext, GMM_RESOURCE_FORMAT Format)
 {
+    GMM_DPF_ENTER;
     GMM_LIB_CONTEXT *pGmmLibContext = (GMM_LIB_CONTEXT *)pLibContext;
 
     return (Format > GMM_FORMAT_INVALID) &&
@@ -368,6 +378,7 @@ uint8_t GMM_STDCALL GmmIsCompressed(void *pLibContext, GMM_RESOURCE_FORMAT Forma
 //-----------------------------------------------------------------------------
 void GMM_STDCALL GmmGetCacheSizes(GMM_LIB_CONTEXT *pGmmLibContext, GMM_CACHE_SIZES *pCacheSizes)
 {
+    GMM_DPF_ENTER;
     const GT_SYSTEM_INFO *pGtSysInfo;
     __GMM_ASSERT(pCacheSizes != NULL);
     __GMM_ASSERT(pGmmLibContext != NULL);
@@ -398,6 +409,7 @@ namespace GmmLib
         //-----------------------------------------------------------------------------
         uint32_t GMM_STDCALL GmmGetNumPlanes(GMM_RESOURCE_FORMAT Format)
         {
+            GMM_DPF_ENTER;
             uint32_t Planes = 1;
 
             switch(Format)
@@ -453,6 +465,7 @@ namespace GmmLib
         //-----------------------------------------------------------------------------
         GMM_RESOURCE_FORMAT GMM_STDCALL GmmGetFormatForASTC(uint8_t HDR, uint8_t Float, uint32_t BlockWidth, uint32_t BlockHeight, uint32_t BlockDepth)
         {
+            GMM_DPF_ENTER;
             // Full enums/etc. in case we ever need to typedef them...
             enum GMM_SURFACESTATE_FORMAT_ASTC_DYNAMIC_RANGE
             {

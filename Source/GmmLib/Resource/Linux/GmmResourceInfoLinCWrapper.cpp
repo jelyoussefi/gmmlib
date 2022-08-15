@@ -35,6 +35,7 @@ OTHER DEALINGS IN THE SOFTWARE.
 /////////////////////////////////////////////////////////////////////////////////////
 int GmmDeviceCallback(GMM_CLIENT ClientType, GMM_DEVICE_CALLBACKS_INT *pDeviceCb, GMM_DDI_ALLOCATE *pAllocate)
 {
+    GMM_DPF_ENTER;
     int      Status   = 0;
     void *   pBo      = NULL;
     void *   pCpuAddr = NULL;
@@ -63,6 +64,7 @@ int GmmDeviceCallback(GMM_CLIENT ClientType, GMM_DEVICE_CALLBACKS_INT *pDeviceCb
 /////////////////////////////////////////////////////////////////////////////////////
 int GmmDeviceCallback(GMM_CLIENT ClientType, GMM_DEVICE_CALLBACKS_INT *pDeviceCb, GMM_DDI_DEALLOCATE *pDeallocate)
 {
+    GMM_DPF_ENTER;
     int Status = 0;
 
     pDeviceCb->DevCbPtrs_.pfnDeallocate(pDeallocate->bo);
@@ -80,6 +82,7 @@ int GmmDeviceCallback(GMM_CLIENT ClientType, GMM_DEVICE_CALLBACKS_INT *pDeviceCb
 /////////////////////////////////////////////////////////////////////////////////////
 int GmmDeviceCallback(GMM_CLIENT ClientType, GMM_DEVICE_CALLBACKS_INT *pDeviceCb, GMM_DDI_WAITFORSYNCHRONIZATIONOBJECTFROMCPU *pWait)
 {
+    GMM_DPF_ENTER;
     int Status = 0;
 
     pDeviceCb->DevCbPtrs_.pfnWaitFromCpu(pWait->bo);
@@ -97,6 +100,7 @@ int GmmDeviceCallback(GMM_CLIENT ClientType, GMM_DEVICE_CALLBACKS_INT *pDeviceCb
 /////////////////////////////////////////////////////////////////////////////////////
 int GmmCheckForNullDevCbPfn(GMM_CLIENT ClientType, GMM_DEVICE_CALLBACKS_INT *pDeviceCb, GMM_DEVICE_CALLBACKS_TYPE CallBackType)
 {
+    GMM_DPF_ENTER;
     int Status = 0;
 
     switch(CallBackType)
@@ -121,6 +125,7 @@ int GmmCheckForNullDevCbPfn(GMM_CLIENT ClientType, GMM_DEVICE_CALLBACKS_INT *pDe
 // Dummy Translation Table Callback for reusing ..
 static inline int DummyPrologTranslationTable(void *pDeviceHandle)
 {
+    GMM_DPF_ENTER;
     return 0;
 }
 
@@ -129,6 +134,7 @@ static inline int DummyWriteL1Entries(void *          pDeviceHandle,
                                       GMM_GFX_ADDRESS GfxAddress,
                                       uint32_t *      Data)
 {
+    GMM_DPF_ENTER;
     return 0;
 }
 
@@ -136,6 +142,7 @@ static inline int DummyWriteL2L3Entry(void *          pDeviceHandle,
                                       GMM_GFX_ADDRESS GfxAddress,
                                       uint64_t        Data)
 {
+    GMM_DPF_ENTER;
     return 0;
 }
 
@@ -143,12 +150,14 @@ static inline int DummyWriteFenceID(void *          pDeviceHandle,
                                     GMM_GFX_ADDRESS GfxAddress,
                                     uint64_t        Data)
 {
+    GMM_DPF_ENTER;
     return 0;
 }
 
 static inline int DummyEpilogTranslationTable(void *  pDeviceHandle,
                                               uint8_t ForceFlush)
 {
+    GMM_DPF_ENTER;
     return 0;
 }
 
@@ -156,6 +165,7 @@ static inline int DummyCopyL1Entry(void *          pDeviceHandle,
                                    GMM_GFX_ADDRESS DstGfxAddress,
                                    GMM_GFX_ADDRESS SrcGfxAddress)
 {
+    GMM_DPF_ENTER;
     return 0;
 }
 
@@ -163,6 +173,7 @@ static inline int DummyWriteL3Adr(void *          pDeviceHandle,
                                   GMM_GFX_ADDRESS L3GfxAddress,
                                   uint64_t        RegOffset)
 {
+    GMM_DPF_ENTER;
     return 0;
 }
 

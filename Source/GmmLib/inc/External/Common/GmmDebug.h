@@ -137,12 +137,12 @@ OTHER DEALINGS IN THE SOFTWARE.
         }                                               \
         else                                            \
         {                                               \
-            GMM_LOG_INFO(message, ##__VA_ARGS__);       \
+            GMM_LOG_TRACE(message, ##__VA_ARGS__);       \
         }                                               \
     }
 
 #else
-    #define GMMLibDebugMessage(...)
+    #define GMMLibDeblugMessage(...)
 #endif //_DEBUG || _RELEASE_INTERNAL
 
 #define GMM_DPF             GMMLibDebugMessage
@@ -156,10 +156,10 @@ OTHER DEALINGS IN THE SOFTWARE.
 // This block defines various debug print macros
 // ------------------------------------------------------------------------
 #define GMM_DPF_ENTER   \
-    GMM_DPF(GFXDBG_FUNCTION_ENTRY, "%s-->\n", __FUNCTION__);
+    GMM_DPF(GFXDBG_VERBOSE, "%s-->\n", __FUNCTION__);
 
 #define GMM_DPF_EXIT    \
-    GMM_DPF(GFXDBG_FUNCTION_EXIT, "%s<--\n", __FUNCTION__);
+    GMM_DPF(GFXDBG_VERBOSE, "%s<--\n", __FUNCTION__);
 
 #define GMM_DPF_CRITICAL(Message)    \
     GMM_DPF(GFXDBG_CRITICAL, "%s:%d: %s\n", __FUNCTION__, __LINE__, (Message));

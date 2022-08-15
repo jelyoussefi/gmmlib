@@ -33,6 +33,7 @@ OTHER DEALINGS IN THE SOFTWARE.
 /////////////////////////////////////////////////////////////////////////////////////
 GMM_RESOURCE_INFO *GMM_STDCALL GmmResCreate(GMM_RESCREATE_PARAMS *pCreateParams, GMM_LIB_CONTEXT *pLibContext)
 {
+    GMM_DPF_ENTER;
     GMM_RESOURCE_INFO *pRes = NULL;
 
 #if(!defined(__GMM_KMD__) && !defined(GMM_UNIFIED_LIB))
@@ -86,6 +87,7 @@ ERROR_CASE:
 /////////////////////////////////////////////////////////////////////////////////////
 GMM_RESOURCE_INFO *GMM_STDCALL GmmResCopy(GMM_RESOURCE_INFO *pRes)
 {
+    GMM_DPF_ENTER;
     GMM_RESOURCE_INFO *pResCopy = NULL;
 
     GMM_DPF_ENTER;
@@ -123,6 +125,7 @@ GMM_RESOURCE_INFO *GMM_STDCALL GmmResCopy(GMM_RESOURCE_INFO *pRes)
 /////////////////////////////////////////////////////////////////////////////////////
 void GMM_STDCALL GmmResMemcpy(void *pDst, void *pSrc)
 {
+    GMM_DPF_ENTER;
 #if(!defined(__GMM_KMD__) && !defined(GMM_UNIFIED_LIB))
     GmmResMemcpyThroughClientCtxt(pDst, pSrc);
 #else
@@ -189,6 +192,7 @@ void *GMM_STDCALL GmmResGetSystemMemPointer(GMM_RESOURCE_INFO *pRes,
 /////////////////////////////////////////////////////////////////////////////////////
 GMM_GFX_SIZE_T GMM_STDCALL GmmResGetSystemMemSize(GMM_RESOURCE_INFO *pRes)
 {
+    GMM_DPF_ENTER;
     __GMM_ASSERTPTR(pRes, ((GMM_GFX_SIZE_T)0));
     return pRes->GetSystemMemSize();
 }
@@ -230,6 +234,7 @@ void GMM_STDCALL GmmResGetFlags(GMM_RESOURCE_INFO *pGmmResource,
 /////////////////////////////////////////////////////////////////////////////////////
 GMM_RESOURCE_TYPE GMM_STDCALL GmmResGetResourceType(GMM_RESOURCE_INFO *pGmmResource)
 {
+    GMM_DPF_ENTER;
     __GMM_ASSERTPTR(pGmmResource, RESOURCE_INVALID);
     return pGmmResource->GetResourceType();
 }
@@ -258,6 +263,7 @@ GMM_RESOURCE_FORMAT GMM_STDCALL GmmResGetResourceFormat(GMM_RESOURCE_INFO *pGmmR
 uint32_t GMM_STDCALL GmmResGetPaddedWidth(GMM_RESOURCE_INFO *pGmmResource,
                                           uint32_t           MipLevel)
 {
+    GMM_DPF_ENTER;
     __GMM_ASSERTPTR(pGmmResource, 0);
     return pGmmResource->GetPaddedWidth(MipLevel);
 }
@@ -273,6 +279,7 @@ uint32_t GMM_STDCALL GmmResGetPaddedWidth(GMM_RESOURCE_INFO *pGmmResource,
 uint32_t GMM_STDCALL GmmResGetPaddedHeight(GMM_RESOURCE_INFO *pGmmResource,
                                            uint32_t           MipLevel)
 {
+    GMM_DPF_ENTER;
     __GMM_ASSERTPTR(pGmmResource, 0);
     return pGmmResource->GetPaddedHeight(MipLevel);
 }
@@ -288,6 +295,7 @@ uint32_t GMM_STDCALL GmmResGetPaddedHeight(GMM_RESOURCE_INFO *pGmmResource,
 uint32_t GMM_STDCALL GmmResGetPaddedPitch(GMM_RESOURCE_INFO *pGmmResource,
                                           uint32_t           MipLevel)
 {
+    GMM_DPF_ENTER;
     __GMM_ASSERTPTR(pGmmResource, 0);
     return pGmmResource->GetPaddedPitch(MipLevel);
 }
@@ -302,6 +310,7 @@ uint32_t GMM_STDCALL GmmResGetPaddedPitch(GMM_RESOURCE_INFO *pGmmResource,
 /////////////////////////////////////////////////////////////////////////////////////
 uint32_t GMM_STDCALL GmmResGetBaseWidth(GMM_RESOURCE_INFO *pGmmResource)
 {
+    GMM_DPF_ENTER;
     __GMM_ASSERTPTR(pGmmResource, 0);
     return GFX_ULONG_CAST(pGmmResource->GetBaseWidth());
 }
@@ -315,6 +324,7 @@ uint32_t GMM_STDCALL GmmResGetBaseWidth(GMM_RESOURCE_INFO *pGmmResource)
 /////////////////////////////////////////////////////////////////////////////////////
 GMM_GFX_SIZE_T GMM_STDCALL GmmResGetBaseWidth64(GMM_RESOURCE_INFO *pGmmResource)
 {
+    GMM_DPF_ENTER;
     __GMM_ASSERTPTR(pGmmResource, 0);
     return pGmmResource->GetBaseWidth();
 }
@@ -328,6 +338,7 @@ GMM_GFX_SIZE_T GMM_STDCALL GmmResGetBaseWidth64(GMM_RESOURCE_INFO *pGmmResource)
 /////////////////////////////////////////////////////////////////////////////////////
 uint32_t GMM_STDCALL GmmResGetBaseAlignment(GMM_RESOURCE_INFO *pGmmResource)
 {
+    GMM_DPF_ENTER;
     __GMM_ASSERTPTR(pGmmResource, 0);
     return pGmmResource->GetBaseAlignment();
 }
@@ -341,6 +352,7 @@ uint32_t GMM_STDCALL GmmResGetBaseAlignment(GMM_RESOURCE_INFO *pGmmResource)
 /////////////////////////////////////////////////////////////////////////////////////
 uint32_t GMM_STDCALL GmmResGetBaseHeight(GMM_RESOURCE_INFO *pGmmResource)
 {
+    GMM_DPF_ENTER;
     __GMM_ASSERTPTR(pGmmResource, 0);
     return pGmmResource->GetBaseHeight();
 }
@@ -354,6 +366,7 @@ uint32_t GMM_STDCALL GmmResGetBaseHeight(GMM_RESOURCE_INFO *pGmmResource)
 /////////////////////////////////////////////////////////////////////////////////////
 uint32_t GMM_STDCALL GmmResGetDepth(GMM_RESOURCE_INFO *pGmmResource)
 {
+    GMM_DPF_ENTER;
     __GMM_ASSERTPTR(pGmmResource, 0);
     return pGmmResource->GetBaseDepth();
 }
@@ -367,6 +380,7 @@ uint32_t GMM_STDCALL GmmResGetDepth(GMM_RESOURCE_INFO *pGmmResource)
 /////////////////////////////////////////////////////////////////////////////////////
 uint32_t GMM_STDCALL GmmResGetMaxLod(GMM_RESOURCE_INFO *pGmmResource)
 {
+    GMM_DPF_ENTER;
     __GMM_ASSERTPTR(pGmmResource, 0);
     return pGmmResource->GetMaxLod();
 }
@@ -380,6 +394,7 @@ uint32_t GMM_STDCALL GmmResGetMaxLod(GMM_RESOURCE_INFO *pGmmResource)
 /////////////////////////////////////////////////////////////////////////////////////
 uint32_t GMM_STDCALL GmmResGetSurfaceStateMipTailStartLod(GMM_RESOURCE_INFO *pGmmResource)
 {
+    GMM_DPF_ENTER;
     __GMM_ASSERT(pGmmResource);
     return pGmmResource->GetMipTailStartLodSurfaceState();
 }
@@ -393,6 +408,7 @@ uint32_t GMM_STDCALL GmmResGetSurfaceStateMipTailStartLod(GMM_RESOURCE_INFO *pGm
 /////////////////////////////////////////////////////////////////////////////////////
 uint32_t GMM_STDCALL GmmResGetSurfaceStateTileAddressMappingMode(GMM_RESOURCE_INFO *pGmmResource)
 {
+    GMM_DPF_ENTER;
     __GMM_ASSERT(pGmmResource);
     return pGmmResource->GetTileAddressMappingModeSurfaceState();
 }
@@ -406,6 +422,7 @@ uint32_t GMM_STDCALL GmmResGetSurfaceStateTileAddressMappingMode(GMM_RESOURCE_IN
 /////////////////////////////////////////////////////////////////////////////////////
 uint32_t GMM_STDCALL GmmResGetSurfaceStateStdTilingModeExt(GMM_RESOURCE_INFO *pGmmResource)
 {
+    GMM_DPF_ENTER;
     __GMM_ASSERTPTR(pGmmResource, GMM_INVALIDPARAM);
     return pGmmResource->GetStdTilingModeExtSurfaceState();
 }
@@ -419,6 +436,7 @@ uint32_t GMM_STDCALL GmmResGetSurfaceStateStdTilingModeExt(GMM_RESOURCE_INFO *pG
 /////////////////////////////////////////////////////////////////////////////////////
 uint32_t GMM_STDCALL GmmResGetArraySize(GMM_RESOURCE_INFO *pGmmResource)
 {
+    GMM_DPF_ENTER;
     __GMM_ASSERTPTR(pGmmResource, 0);
     return pGmmResource->GetArraySize();
 }
@@ -433,6 +451,7 @@ uint32_t GMM_STDCALL GmmResGetArraySize(GMM_RESOURCE_INFO *pGmmResource)
 /////////////////////////////////////////////////////////////////////////////////////
 D3DDDI_RATIONAL GMM_STDCALL GmmResGetRefreshRate(GMM_RESOURCE_INFO *pGmmResource)
 {
+    GMM_DPF_ENTER;
     D3DDDI_RATIONAL RetVal = {0};
     __GMM_ASSERTPTR(pGmmResource, RetVal);
     return pGmmResource->GetRefreshRate();
@@ -450,6 +469,7 @@ D3DDDI_RATIONAL GMM_STDCALL GmmResGetRefreshRate(GMM_RESOURCE_INFO *pGmmResource
 void GMM_STDCALL GmmResGetD3d9Flags(GMM_RESOURCE_INFO *   pGmmResource,
                                     D3DDDI_RESOURCEFLAGS *pD3d9Flags)
 {
+    GMM_DPF_ENTER;
     __GMM_ASSERTPTR(pGmmResource, VOIDRETURN);
     __GMM_ASSERTPTR(pD3d9Flags, VOIDRETURN);
 
@@ -465,6 +485,7 @@ void GMM_STDCALL GmmResGetD3d9Flags(GMM_RESOURCE_INFO *   pGmmResource,
 /////////////////////////////////////////////////////////////////////////////////////
 D3DDDIFORMAT GMM_STDCALL GmmResGetD3d9Format(GMM_RESOURCE_INFO *pGmmResource)
 {
+    GMM_DPF_ENTER;
     __GMM_ASSERTPTR(pGmmResource, (D3DDDIFORMAT)0);
     return pGmmResource->GetD3d9Format();
 }
@@ -479,6 +500,7 @@ D3DDDIFORMAT GMM_STDCALL GmmResGetD3d9Format(GMM_RESOURCE_INFO *pGmmResource)
 /////////////////////////////////////////////////////////////////////////////////////
 D3DDDI_VIDEO_PRESENT_SOURCE_ID GMM_STDCALL GmmResGetVidSourceId(GMM_RESOURCE_INFO *pGmmResource)
 {
+    GMM_DPF_ENTER;
     __GMM_ASSERTPTR(pGmmResource, 0);
     return pGmmResource->GetVidSourceId();
 }
@@ -494,6 +516,7 @@ D3DDDI_VIDEO_PRESENT_SOURCE_ID GMM_STDCALL GmmResGetVidSourceId(GMM_RESOURCE_INF
 /////////////////////////////////////////////////////////////////////////////////////
 uint8_t GMM_STDCALL GmmResIs64KBPageSuitable(GMM_RESOURCE_INFO *pGmmResource)
 {
+    GMM_DPF_ENTER;
     __GMM_ASSERTPTR(pGmmResource, 0);
     return pGmmResource->Is64KBPageSuitable();
 }
@@ -509,6 +532,7 @@ uint8_t GMM_STDCALL GmmResIs64KBPageSuitable(GMM_RESOURCE_INFO *pGmmResource)
 /////////////////////////////////////////////////////////////////////////////////////
 uint32_t GMM_STDCALL GmmResGetRotateInfo(GMM_RESOURCE_INFO *pGmmResource)
 {
+    GMM_DPF_ENTER;
     __GMM_ASSERTPTR(pGmmResource, 0);
     return pGmmResource->GetRotateInfo();
 }
@@ -522,6 +546,7 @@ uint32_t GMM_STDCALL GmmResGetRotateInfo(GMM_RESOURCE_INFO *pGmmResource)
 /////////////////////////////////////////////////////////////////////////////////////
 uint32_t GMM_STDCALL GmmResGetAuxQPitch(GMM_RESOURCE_INFO *pGmmResource)
 {
+    GMM_DPF_ENTER;
     __GMM_ASSERTPTR(pGmmResource, 0);
     return pGmmResource->GetAuxQPitch();
 }
@@ -535,6 +560,7 @@ uint32_t GMM_STDCALL GmmResGetAuxQPitch(GMM_RESOURCE_INFO *pGmmResource)
 /////////////////////////////////////////////////////////////////////////////////////
 uint32_t GMM_STDCALL GmmResGetQPitch(GMM_RESOURCE_INFO *pGmmResource)
 {
+    GMM_DPF_ENTER;
     __GMM_ASSERTPTR(pGmmResource, 0);
     return pGmmResource->GetQPitch();
 }
@@ -548,6 +574,7 @@ uint32_t GMM_STDCALL GmmResGetQPitch(GMM_RESOURCE_INFO *pGmmResource)
 /////////////////////////////////////////////////////////////////////////////////////
 uint32_t GMM_STDCALL GmmResGetQPitchPlanar(GMM_RESOURCE_INFO *pGmmResource, GMM_YUV_PLANE Plane)
 {
+    GMM_DPF_ENTER;
     __GMM_ASSERTPTR(pGmmResource, 0);
     return pGmmResource->GetQPitchPlanar(Plane);
 }
@@ -561,6 +588,7 @@ uint32_t GMM_STDCALL GmmResGetQPitchPlanar(GMM_RESOURCE_INFO *pGmmResource, GMM_
 /////////////////////////////////////////////////////////////////////////////////////
 GMM_GFX_SIZE_T GMM_STDCALL GmmResGetQPitchInBytes(GMM_RESOURCE_INFO *pGmmResource)
 {
+    GMM_DPF_ENTER;
     __GMM_ASSERT(pGmmResource);
     return pGmmResource->GetQPitchInBytes();
 }
@@ -574,6 +602,7 @@ GMM_GFX_SIZE_T GMM_STDCALL GmmResGetQPitchInBytes(GMM_RESOURCE_INFO *pGmmResourc
 /////////////////////////////////////////////////////////////////////////////////////
 uint32_t GMM_STDCALL GmmResGetRenderPitch(GMM_RESOURCE_INFO *pGmmResource)
 {
+    GMM_DPF_ENTER;
     __GMM_ASSERTPTR(pGmmResource, 0);
     return GFX_ULONG_CAST(pGmmResource->GetRenderPitch());
 }
@@ -587,6 +616,7 @@ uint32_t GMM_STDCALL GmmResGetRenderPitch(GMM_RESOURCE_INFO *pGmmResource)
 /////////////////////////////////////////////////////////////////////////////////////
 uint32_t GMM_STDCALL GmmResGetRenderPitchTiles(GMM_RESOURCE_INFO *pGmmResource)
 {
+    GMM_DPF_ENTER;
     __GMM_ASSERTPTR(pGmmResource, 0);
     return pGmmResource->GetRenderPitchTiles();
 }
@@ -600,6 +630,7 @@ uint32_t GMM_STDCALL GmmResGetRenderPitchTiles(GMM_RESOURCE_INFO *pGmmResource)
 /////////////////////////////////////////////////////////////////////////////////////
 uint32_t GMM_STDCALL GmmResGetRenderAuxPitchTiles(GMM_RESOURCE_INFO *pGmmResource)
 {
+    GMM_DPF_ENTER;
     __GMM_ASSERTPTR(pGmmResource, 0);
     return pGmmResource->GetRenderAuxPitchTiles();
 }
@@ -613,6 +644,7 @@ uint32_t GMM_STDCALL GmmResGetRenderAuxPitchTiles(GMM_RESOURCE_INFO *pGmmResourc
 /////////////////////////////////////////////////////////////////////////////////////
 uint32_t GMM_STDCALL GmmResGetAuxPitch(GMM_RESOURCE_INFO *pGmmResource)
 {
+    GMM_DPF_ENTER;
     __GMM_ASSERTPTR(pGmmResource, 0);
     return GFX_ULONG_CAST(pGmmResource->GetUnifiedAuxPitch());
 }
@@ -626,6 +658,7 @@ uint32_t GMM_STDCALL GmmResGetAuxPitch(GMM_RESOURCE_INFO *pGmmResource)
 /////////////////////////////////////////////////////////////////////////////////////
 uint32_t GMM_STDCALL GmmResGetBitsPerPixel(GMM_RESOURCE_INFO *pGmmResource)
 {
+    GMM_DPF_ENTER;
     __GMM_ASSERTPTR(pGmmResource, 0);
     return pGmmResource->GetBitsPerPixel();
 }
@@ -639,6 +672,7 @@ uint32_t GMM_STDCALL GmmResGetBitsPerPixel(GMM_RESOURCE_INFO *pGmmResource)
 /////////////////////////////////////////////////////////////////////////////////////
 uint32_t GMM_STDCALL GmmResGetAuxBitsPerPixel(GMM_RESOURCE_INFO *pGmmResource)
 {
+    GMM_DPF_ENTER;
     __GMM_ASSERTPTR(pGmmResource, 0);
     return pGmmResource->GetUnifiedAuxBitsPerPixel();
 }
@@ -674,6 +708,7 @@ GmmResGetCompressionBlockXxx(Depth)
 GMM_STATUS GMM_STDCALL GmmResGetOffset(GMM_RESOURCE_INFO *  pGmmResource,
                                        GMM_REQ_OFFSET_INFO *pReqInfo)
 {
+    GMM_DPF_ENTER;
     __GMM_ASSERTPTR(pGmmResource, GMM_ERROR);
     __GMM_ASSERTPTR(pReqInfo, GMM_ERROR);
 
@@ -689,6 +724,7 @@ GMM_STATUS GMM_STDCALL GmmResGetOffset(GMM_RESOURCE_INFO *  pGmmResource,
 /////////////////////////////////////////////////////////////////////////////////////
 GMM_TEXTURE_LAYOUT GMM_STDCALL GmmResGetTextureLayout(GMM_RESOURCE_INFO *pGmmResource)
 {
+    GMM_DPF_ENTER;
     __GMM_ASSERT(pGmmResource);
     return pGmmResource->GetTextureLayout();
 }
@@ -702,6 +738,7 @@ GMM_TEXTURE_LAYOUT GMM_STDCALL GmmResGetTextureLayout(GMM_RESOURCE_INFO *pGmmRes
 /////////////////////////////////////////////////////////////////////////////////////
 GMM_TILE_TYPE GMM_STDCALL GmmResGetTileType(GMM_RESOURCE_INFO *pGmmResource)
 {
+    GMM_DPF_ENTER;
     __GMM_ASSERT(pGmmResource);
     return pGmmResource->GetTileType();
 }
@@ -716,6 +753,7 @@ GMM_TILE_TYPE GMM_STDCALL GmmResGetTileType(GMM_RESOURCE_INFO *pGmmResource)
 /////////////////////////////////////////////////////////////////////////////////////
 uint32_t GMM_STDCALL GmmResGetMipHeight(GMM_RESOURCE_INFO *pResourceInfo, uint32_t MipLevel)
 {
+    GMM_DPF_ENTER;
     return pResourceInfo->GetMipHeight(MipLevel);
 }
 
@@ -729,6 +767,7 @@ uint32_t GMM_STDCALL GmmResGetMipHeight(GMM_RESOURCE_INFO *pResourceInfo, uint32
 /////////////////////////////////////////////////////////////////////////////////////
 GMM_GFX_SIZE_T GMM_STDCALL GmmResGetMipWidth(GMM_RESOURCE_INFO *pResourceInfo, uint32_t MipLevel)
 {
+    GMM_DPF_ENTER;
     return pResourceInfo->GetMipWidth(MipLevel);
 }
 
@@ -742,6 +781,7 @@ GMM_GFX_SIZE_T GMM_STDCALL GmmResGetMipWidth(GMM_RESOURCE_INFO *pResourceInfo, u
 /////////////////////////////////////////////////////////////////////////////////////
 uint32_t GMM_STDCALL GmmResGetMipDepth(GMM_RESOURCE_INFO *pResourceInfo, uint32_t MipLevel)
 {
+    GMM_DPF_ENTER;
     return pResourceInfo->GetMipDepth(MipLevel);
 }
 
@@ -760,6 +800,7 @@ uint32_t GMM_STDCALL GmmResGetMipDepth(GMM_RESOURCE_INFO *pResourceInfo, uint32_
 //-----------------------------------------------------------------------------
 uint8_t GMM_STDCALL GmmResGetCornerTexelMode(GMM_RESOURCE_INFO *pGmmResource)
 {
+
     GMM_DPF_ENTER;
     __GMM_ASSERT(pGmmResource);
 
@@ -775,6 +816,7 @@ uint8_t GMM_STDCALL GmmResGetCornerTexelMode(GMM_RESOURCE_INFO *pGmmResource)
 /////////////////////////////////////////////////////////////////////////////////////
 GMM_CPU_CACHE_TYPE GMM_STDCALL GmmResGetCpuCacheType(GMM_RESOURCE_INFO *pGmmResource)
 {
+    GMM_DPF_ENTER;
     __GMM_ASSERT(pGmmResource);
     return pGmmResource->GetCpuCacheType();
 }
@@ -789,6 +831,7 @@ GMM_CPU_CACHE_TYPE GMM_STDCALL GmmResGetCpuCacheType(GMM_RESOURCE_INFO *pGmmReso
 /////////////////////////////////////////////////////////////////////////////////////
 GMM_RESOURCE_MMC_INFO GMM_STDCALL GmmResGetMmcMode(GMM_RESOURCE_INFO *pGmmResource, uint32_t ArrayIndex)
 {
+    GMM_DPF_ENTER;
     __GMM_ASSERT(pGmmResource);
     return pGmmResource->GetMmcMode(ArrayIndex);
 }
@@ -803,6 +846,7 @@ GMM_RESOURCE_MMC_INFO GMM_STDCALL GmmResGetMmcMode(GMM_RESOURCE_INFO *pGmmResour
 /////////////////////////////////////////////////////////////////////////////////////
 void GMM_STDCALL GmmResSetMmcMode(GMM_RESOURCE_INFO *pGmmResource, GMM_RESOURCE_MMC_INFO Mode, uint32_t ArrayIndex)
 {
+    GMM_DPF_ENTER;
     __GMM_ASSERTPTR(pGmmResource, VOIDRETURN);
     pGmmResource->SetMmcMode(Mode, ArrayIndex);
 }
@@ -817,6 +861,7 @@ void GMM_STDCALL GmmResSetMmcMode(GMM_RESOURCE_INFO *pGmmResource, GMM_RESOURCE_
 /////////////////////////////////////////////////////////////////////////////////////
 uint8_t GMM_STDCALL GmmResIsMediaMemoryCompressed(GMM_RESOURCE_INFO *pGmmResource, uint32_t ArrayIndex)
 {
+    GMM_DPF_ENTER;
     return pGmmResource->IsMediaMemoryCompressed(ArrayIndex);
 }
 
@@ -830,6 +875,7 @@ uint8_t GMM_STDCALL GmmResIsMediaMemoryCompressed(GMM_RESOURCE_INFO *pGmmResourc
 /////////////////////////////////////////////////////////////////////////////////////
 GMM_RESOURCE_MMC_HINT GMM_STDCALL GmmResGetMmcHint(GMM_RESOURCE_INFO *pGmmResource, uint32_t ArrayIndex)
 {
+    GMM_DPF_ENTER;
     __GMM_ASSERT(pGmmResource);
     return pGmmResource->GetMmcHint(ArrayIndex);
 }
@@ -845,6 +891,7 @@ GMM_RESOURCE_MMC_HINT GMM_STDCALL GmmResGetMmcHint(GMM_RESOURCE_INFO *pGmmResour
 /////////////////////////////////////////////////////////////////////////////////////
 void GMM_STDCALL GmmResSetMmcHint(GMM_RESOURCE_INFO *pGmmResource, GMM_RESOURCE_MMC_HINT Hint, uint32_t ArrayIndex)
 {
+    GMM_DPF_ENTER;
     __GMM_ASSERTPTR(pGmmResource, VOIDRETURN);
     pGmmResource->SetMmcHint(Hint, ArrayIndex);
 }
@@ -858,6 +905,7 @@ void GMM_STDCALL GmmResSetMmcHint(GMM_RESOURCE_INFO *pGmmResource, GMM_RESOURCE_
 /////////////////////////////////////////////////////////////////////////////////////
 uint32_t GMM_STDCALL GmmResGetNumSamples(GMM_RESOURCE_INFO *pGmmResource)
 {
+    GMM_DPF_ENTER;
     __GMM_ASSERTPTR(pGmmResource, 0);
     return pGmmResource->GetNumSamples();
 }
@@ -871,6 +919,7 @@ uint32_t GMM_STDCALL GmmResGetNumSamples(GMM_RESOURCE_INFO *pGmmResource)
 /////////////////////////////////////////////////////////////////////////////////////
 GMM_MSAA_SAMPLE_PATTERN GMM_STDCALL GmmResGetSamplePattern(GMM_RESOURCE_INFO *pGmmResource)
 {
+    GMM_DPF_ENTER;
     __GMM_ASSERT(pGmmResource);
     return pGmmResource->GetSamplePattern();
 }
@@ -884,6 +933,7 @@ GMM_MSAA_SAMPLE_PATTERN GMM_STDCALL GmmResGetSamplePattern(GMM_RESOURCE_INFO *pG
 /////////////////////////////////////////////////////////////////////////////////////
 uint32_t GMM_STDCALL GmmResGetHAlign(GMM_RESOURCE_INFO *pGmmResource)
 {
+    GMM_DPF_ENTER;
     __GMM_ASSERTPTR(pGmmResource, 0);
     return pGmmResource->GetHAlign();
 }
@@ -897,6 +947,7 @@ uint32_t GMM_STDCALL GmmResGetHAlign(GMM_RESOURCE_INFO *pGmmResource)
 /////////////////////////////////////////////////////////////////////////////////////
 uint32_t GMM_STDCALL GmmResGetVAlign(GMM_RESOURCE_INFO *pGmmResource)
 {
+    GMM_DPF_ENTER;
     __GMM_ASSERTPTR(pGmmResource, 0);
     return pGmmResource->GetVAlign();
 }
@@ -910,6 +961,7 @@ uint32_t GMM_STDCALL GmmResGetVAlign(GMM_RESOURCE_INFO *pGmmResource)
 /////////////////////////////////////////////////////////////////////////////////////
 uint32_t GMM_STDCALL GmmResGetAuxHAlign(GMM_RESOURCE_INFO *pGmmResource)
 {
+    GMM_DPF_ENTER;
     __GMM_ASSERTPTR(pGmmResource, 0);
     return pGmmResource->GetAuxHAlign();
 }
@@ -923,6 +975,7 @@ uint32_t GMM_STDCALL GmmResGetAuxHAlign(GMM_RESOURCE_INFO *pGmmResource)
 /////////////////////////////////////////////////////////////////////////////////////
 uint32_t GMM_STDCALL GmmResGetAuxVAlign(GMM_RESOURCE_INFO *pGmmResource)
 {
+    GMM_DPF_ENTER;
     __GMM_ASSERTPTR(pGmmResource, 0);
     return pGmmResource->GetAuxVAlign();
 }
@@ -936,6 +989,7 @@ uint32_t GMM_STDCALL GmmResGetAuxVAlign(GMM_RESOURCE_INFO *pGmmResource)
 /////////////////////////////////////////////////////////////////////////////////////
 uint8_t GMM_STDCALL GmmResIsArraySpacingSingleLod(GMM_RESOURCE_INFO *pGmmResource)
 {
+    GMM_DPF_ENTER;
     __GMM_ASSERTPTR(pGmmResource, 0);
     return pGmmResource->IsArraySpacingSingleLod();
 }
@@ -949,6 +1003,7 @@ uint8_t GMM_STDCALL GmmResIsArraySpacingSingleLod(GMM_RESOURCE_INFO *pGmmResourc
 /////////////////////////////////////////////////////////////////////////////////////
 uint8_t GMM_STDCALL GmmResIsASTC(GMM_RESOURCE_INFO *pGmmResource)
 {
+    GMM_DPF_ENTER;
     __GMM_ASSERTPTR(pGmmResource, 0);
     return pGmmResource->IsASTC();
 }
@@ -962,6 +1017,7 @@ uint8_t GMM_STDCALL GmmResIsASTC(GMM_RESOURCE_INFO *pGmmResource)
 /////////////////////////////////////////////////////////////////////////////////////
 uint8_t GMM_STDCALL GmmResIsMsaaFormatDepthStencil(GMM_RESOURCE_INFO *pGmmResource)
 {
+    GMM_DPF_ENTER;
     __GMM_ASSERTPTR(pGmmResource, 0);
     return pGmmResource->IsMsaaFormatDepthStencil();
 }
@@ -975,6 +1031,7 @@ uint8_t GMM_STDCALL GmmResIsMsaaFormatDepthStencil(GMM_RESOURCE_INFO *pGmmResour
 /////////////////////////////////////////////////////////////////////////////////////
 uint8_t GMM_STDCALL GmmResIsSvm(GMM_RESOURCE_INFO *pGmmResource)
 {
+    GMM_DPF_ENTER;
     __GMM_ASSERTPTR(pGmmResource, 0);
     return pGmmResource->IsSvm();
 }
@@ -988,6 +1045,7 @@ uint8_t GMM_STDCALL GmmResIsSvm(GMM_RESOURCE_INFO *pGmmResource)
 /////////////////////////////////////////////////////////////////////////////////////
 uint8_t GMM_STDCALL GmmResValidateParams(GMM_RESOURCE_INFO *pResourceInfo)
 {
+    GMM_DPF_ENTER;
     return pResourceInfo->ValidateParams();
 }
 
@@ -1000,6 +1058,7 @@ uint8_t GMM_STDCALL GmmResValidateParams(GMM_RESOURCE_INFO *pResourceInfo)
 /////////////////////////////////////////////////////////////////////////////////////
 void GMM_STDCALL GmmResSetPrivateData(GMM_RESOURCE_INFO *pGmmResource, void *pPrivateData)
 {
+    GMM_DPF_ENTER;
     __GMM_ASSERTPTR(pGmmResource, VOIDRETURN);
     pGmmResource->SetPrivateData(pPrivateData);
 }
@@ -1013,6 +1072,7 @@ void GMM_STDCALL GmmResSetPrivateData(GMM_RESOURCE_INFO *pGmmResource, void *pPr
 /////////////////////////////////////////////////////////////////////////////////////
 void *GMM_STDCALL GmmResGetPrivateData(GMM_RESOURCE_INFO *pGmmResource)
 {
+    GMM_DPF_ENTER;
     __GMM_ASSERTPTR(pGmmResource, 0);
     return pGmmResource->GetPrivateData();
 }
@@ -1026,6 +1086,7 @@ void *GMM_STDCALL GmmResGetPrivateData(GMM_RESOURCE_INFO *pGmmResource)
 /////////////////////////////////////////////////////////////////////////////////////
 GMM_GFX_ADDRESS GMM_STDCALL GmmResGetGfxAddress(GMM_RESOURCE_INFO *pGmmResource)
 {
+    GMM_DPF_ENTER;
     __GMM_ASSERTPTR(pGmmResource, 0);
     return pGmmResource->GetGfxAddress();
 }
@@ -1039,6 +1100,7 @@ GMM_GFX_ADDRESS GMM_STDCALL GmmResGetGfxAddress(GMM_RESOURCE_INFO *pGmmResource)
 /////////////////////////////////////////////////////////////////////////////////////
 uint32_t GMM_STDCALL GmmResGetTallBufferHeight(GMM_RESOURCE_INFO *pResourceInfo)
 {
+    GMM_DPF_ENTER;
     __GMM_ASSERTPTR(pResourceInfo, 0);
     return pResourceInfo->GetTallBufferHeight();
 };
@@ -1053,6 +1115,7 @@ uint32_t GMM_STDCALL GmmResGetTallBufferHeight(GMM_RESOURCE_INFO *pResourceInfo)
 /////////////////////////////////////////////////////////////////////////////////////
 GMM_GFX_SIZE_T GMM_STDCALL GmmResGetSizeMainSurface(const GMM_RESOURCE_INFO *pResourceInfo)
 {
+    GMM_DPF_ENTER;
     return pResourceInfo->GetSizeMainSurface();
 }
 
@@ -1066,12 +1129,14 @@ GMM_GFX_SIZE_T GMM_STDCALL GmmResGetSizeMainSurface(const GMM_RESOURCE_INFO *pRe
 /////////////////////////////////////////////////////////////////////////////////////
 uint32_t GMM_STDCALL GmmResGetRenderSize(GMM_RESOURCE_INFO *pResourceInfo)
 {
+    GMM_DPF_ENTER;
     __GMM_ASSERTPTR(pResourceInfo, 0);
     return GFX_ULONG_CAST(pResourceInfo->GetSizeSurface());
 }
 
 uint32_t GMM_STDCALL GmmResGetAuxSurfaceSize(GMM_RESOURCE_INFO *pGmmResource, GMM_UNIFIED_AUX_TYPE GmmAuxType)
 {
+    GMM_DPF_ENTER;
     return GFX_ULONG_CAST(GmmResGetSizeAuxSurface(pGmmResource, GmmAuxType));
 }
 
@@ -1084,6 +1149,7 @@ uint32_t GMM_STDCALL GmmResGetAuxSurfaceSize(GMM_RESOURCE_INFO *pGmmResource, GM
 /////////////////////////////////////////////////////////////////////////////////////
 GMM_GFX_SIZE_T GMM_STDCALL GmmResGetSizeSurface(GMM_RESOURCE_INFO *pResourceInfo)
 {
+    GMM_DPF_ENTER;
     __GMM_ASSERTPTR(pResourceInfo, 0);
     return pResourceInfo->GetSizeSurface();
 }
@@ -1097,6 +1163,7 @@ GMM_GFX_SIZE_T GMM_STDCALL GmmResGetSizeSurface(GMM_RESOURCE_INFO *pResourceInfo
 /////////////////////////////////////////////////////////////////////////////////////
 GMM_GFX_SIZE_T GMM_STDCALL GmmResGetSizeAllocation(GMM_RESOURCE_INFO *pResourceInfo)
 {
+    GMM_DPF_ENTER;
     __GMM_ASSERTPTR(pResourceInfo, 0);
     return pResourceInfo->GetSizeAllocation();
 }
@@ -1110,6 +1177,7 @@ GMM_GFX_SIZE_T GMM_STDCALL GmmResGetSizeAllocation(GMM_RESOURCE_INFO *pResourceI
 /////////////////////////////////////////////////////////////////////////////////////
 GMM_SURFACESTATE_FORMAT GMM_STDCALL GmmResGetSurfaceStateFormat(GMM_RESOURCE_INFO *pGmmResource)
 {
+    GMM_DPF_ENTER;
     __GMM_ASSERTPTR(pGmmResource, GMM_SURFACESTATE_FORMAT_INVALID);
     return pGmmResource->GetResourceFormatSurfaceState();
 }
@@ -1128,6 +1196,7 @@ GMM_SURFACESTATE_FORMAT GMM_STDCALL GmmResGetSurfaceStateFormat(GMM_RESOURCE_INF
 //-----------------------------------------------------------------------------
 GMM_SURFACESTATE_FORMAT GMM_STDCALL GmmGetSurfaceStateFormat(GMM_RESOURCE_FORMAT Format, GMM_LIB_CONTEXT *pGmmLibContext)
 {
+    GMM_DPF_ENTER;
     return ((Format > GMM_FORMAT_INVALID) &&
             (Format < GMM_RESOURCE_FORMATS)) ?
            pGmmLibContext->GetPlatformInfo().FormatTable[Format].SurfaceStateFormat :
@@ -1143,6 +1212,7 @@ GMM_SURFACESTATE_FORMAT GMM_STDCALL GmmGetSurfaceStateFormat(GMM_RESOURCE_FORMAT
 /////////////////////////////////////////////////////////////////////////////////////
 uint32_t GMM_STDCALL GmmResGetSurfaceStateHAlign(GMM_RESOURCE_INFO *pGmmResource)
 {
+    GMM_DPF_ENTER;
     __GMM_ASSERTPTR(pGmmResource, 0);
     return pGmmResource->GetHAlignSurfaceState();
 }
@@ -1156,6 +1226,7 @@ uint32_t GMM_STDCALL GmmResGetSurfaceStateHAlign(GMM_RESOURCE_INFO *pGmmResource
 /////////////////////////////////////////////////////////////////////////////////////
 uint32_t GMM_STDCALL GmmResGetSurfaceStateVAlign(GMM_RESOURCE_INFO *pGmmResource)
 {
+    GMM_DPF_ENTER;
     __GMM_ASSERTPTR(pGmmResource, 0);
     return pGmmResource->GetVAlignSurfaceState();
 }
@@ -1169,6 +1240,7 @@ uint32_t GMM_STDCALL GmmResGetSurfaceStateVAlign(GMM_RESOURCE_INFO *pGmmResource
 /////////////////////////////////////////////////////////////////////////////////////
 uint32_t GMM_STDCALL GmmResGetSurfaceStateTiledResourceMode(GMM_RESOURCE_INFO *pGmmResource)
 {
+    GMM_DPF_ENTER;
     __GMM_ASSERTPTR(pGmmResource, 0);
     return pGmmResource->GetTiledResourceModeSurfaceState();
 }
@@ -1184,6 +1256,7 @@ uint32_t GMM_STDCALL GmmResGetSurfaceStateTiledResourceMode(GMM_RESOURCE_INFO *p
 /////////////////////////////////////////////////////////////////////////////////////
 uint32_t GMM_STDCALL GmmResGetAuxSurfaceOffset(GMM_RESOURCE_INFO *pGmmResource, GMM_UNIFIED_AUX_TYPE GmmAuxType)
 {
+    GMM_DPF_ENTER;
     return GFX_ULONG_CAST(GmmResGetAuxSurfaceOffset64(pGmmResource, GmmAuxType));
 }
 
@@ -1197,6 +1270,7 @@ uint32_t GMM_STDCALL GmmResGetAuxSurfaceOffset(GMM_RESOURCE_INFO *pGmmResource, 
 /////////////////////////////////////////////////////////////////////////////////////
 GMM_GFX_SIZE_T GMM_STDCALL GmmResGetAuxSurfaceOffset64(GMM_RESOURCE_INFO *pGmmResource, GMM_UNIFIED_AUX_TYPE GmmAuxType)
 {
+    GMM_DPF_ENTER;
     __GMM_ASSERTPTR(pGmmResource, 0);
     return pGmmResource->GetUnifiedAuxSurfaceOffset(GmmAuxType);
 }
@@ -1211,6 +1285,7 @@ GMM_GFX_SIZE_T GMM_STDCALL GmmResGetAuxSurfaceOffset64(GMM_RESOURCE_INFO *pGmmRe
 /////////////////////////////////////////////////////////////////////////////////////
 GMM_GFX_SIZE_T GMM_STDCALL GmmResGetSizeAuxSurface(GMM_RESOURCE_INFO *pGmmResource, GMM_UNIFIED_AUX_TYPE GmmAuxType)
 {
+    GMM_DPF_ENTER;
     __GMM_ASSERTPTR(pGmmResource, 0);
     return pGmmResource->GetSizeAuxSurface(GmmAuxType);
 }
@@ -1228,6 +1303,7 @@ GMM_GFX_SIZE_T GMM_STDCALL GmmResGetSizeAuxSurface(GMM_RESOURCE_INFO *pGmmResour
 /////////////////////////////////////////////////////////////////////////////////////
 uint8_t GMM_STDCALL GmmResGetSetHardwareProtection(GMM_RESOURCE_INFO *pGmmResource, uint8_t GetIsEncrypted, uint8_t SetIsEncrypted)
 {
+    GMM_DPF_ENTER;
     return pGmmResource ?
            pGmmResource->GetSetHardwareProtection(GetIsEncrypted, SetIsEncrypted) :
            0;
@@ -1243,6 +1319,7 @@ uint8_t GMM_STDCALL GmmResGetSetHardwareProtection(GMM_RESOURCE_INFO *pGmmResour
 /////////////////////////////////////////////////////////////////////////////////////
 uint8_t GMM_STDCALL GmmResCpuBlt(GMM_RESOURCE_INFO *pGmmResource, GMM_RES_COPY_BLT *pBlt)
 {
+    GMM_DPF_ENTER;
     __GMM_ASSERTPTR(pGmmResource, 0);
     return pGmmResource->CpuBlt(pBlt);
 }
@@ -1256,6 +1333,7 @@ uint8_t GMM_STDCALL GmmResCpuBlt(GMM_RESOURCE_INFO *pGmmResource, GMM_RES_COPY_B
 /////////////////////////////////////////////////////////////////////////////////////
 GMM_GFX_SIZE_T GMM_STDCALL GmmResGetStdLayoutSize(GMM_RESOURCE_INFO *pGmmResource)
 {
+    GMM_DPF_ENTER;
     __GMM_ASSERT(pGmmResource);
     return pGmmResource->GetStdLayoutSize();
 }
@@ -1270,6 +1348,7 @@ GMM_GFX_SIZE_T GMM_STDCALL GmmResGetStdLayoutSize(GMM_RESOURCE_INFO *pGmmResourc
 /////////////////////////////////////////////////////////////////////////////////////
 uint8_t GMM_STDCALL GmmResGetMappingSpanDesc(GMM_RESOURCE_INFO *pGmmResource, GMM_GET_MAPPING *pMapping)
 {
+    GMM_DPF_ENTER;
     __GMM_ASSERTPTR(pGmmResource, 0);
     return pGmmResource->GetMappingSpanDesc(pMapping);
 }
@@ -1283,6 +1362,7 @@ uint8_t GMM_STDCALL GmmResGetMappingSpanDesc(GMM_RESOURCE_INFO *pGmmResource, GM
 /////////////////////////////////////////////////////////////////////////////////////
 uint8_t GMM_STDCALL GmmResIsColorSeparation(GMM_RESOURCE_INFO *pGmmResource)
 {
+    GMM_DPF_ENTER;
     __GMM_ASSERTPTR(pGmmResource, 0);
     return pGmmResource->IsColorSeparation();
 }
@@ -1297,6 +1377,7 @@ uint8_t GMM_STDCALL GmmResIsColorSeparation(GMM_RESOURCE_INFO *pGmmResource)
 /////////////////////////////////////////////////////////////////////////////////////
 uint32_t GMM_STDCALL GmmResTranslateColorSeparationX(GMM_RESOURCE_INFO *pGmmResource, uint32_t x)
 {
+    GMM_DPF_ENTER;
     __GMM_ASSERTPTR(pGmmResource, false);
     return pGmmResource->TranslateColorSeparationX(x);
 }
@@ -1310,6 +1391,7 @@ uint32_t GMM_STDCALL GmmResTranslateColorSeparationX(GMM_RESOURCE_INFO *pGmmReso
 /////////////////////////////////////////////////////////////////////////////////////
 uint32_t GMM_STDCALL GmmResGetColorSeparationArraySize(GMM_RESOURCE_INFO *pGmmResource)
 {
+    GMM_DPF_ENTER;
     __GMM_ASSERTPTR(pGmmResource, 0);
     return pGmmResource->GetColorSeparationArraySize();
 }
@@ -1323,6 +1405,7 @@ uint32_t GMM_STDCALL GmmResGetColorSeparationArraySize(GMM_RESOURCE_INFO *pGmmRe
 /////////////////////////////////////////////////////////////////////////////////////
 uint32_t GMM_STDCALL GmmResGetColorSeparationPhysicalWidth(GMM_RESOURCE_INFO *pGmmResource)
 {
+    GMM_DPF_ENTER;
     __GMM_ASSERTPTR(pGmmResource, 0);
     return pGmmResource->GetColorSeparationPhysicalWidth();
 }
@@ -1342,6 +1425,7 @@ uint32_t GMM_STDCALL GmmResGetColorSeparationPhysicalWidth(GMM_RESOURCE_INFO *pG
 //-----------------------------------------------------------------------------
 uint32_t GMM_STDCALL GmmResGetMaxGpuVirtualAddressBits(GMM_RESOURCE_INFO *pGmmResource, GMM_LIB_CONTEXT *pGmmLibContext)
 {
+    GMM_DPF_ENTER;
     if(pGmmResource == NULL)
     {
         __GMM_ASSERTPTR(pGmmLibContext, 0);
@@ -1362,6 +1446,7 @@ uint32_t GMM_STDCALL GmmResGetMaxGpuVirtualAddressBits(GMM_RESOURCE_INFO *pGmmRe
 /////////////////////////////////////////////////////////////////////////////////////
 uint8_t GMM_STDCALL GmmIsSurfaceFaultable(GMM_RESOURCE_INFO *pGmmResource)
 {
+    GMM_DPF_ENTER;
     __GMM_ASSERTPTR(pGmmResource, 0);
     return pGmmResource->IsSurfaceFaultable();
 }
@@ -1375,6 +1460,7 @@ uint8_t GMM_STDCALL GmmIsSurfaceFaultable(GMM_RESOURCE_INFO *pGmmResource)
 /////////////////////////////////////////////////////////////////////////////////////
 GMM_RESOURCE_FLAG GMM_STDCALL GmmResGetResourceFlags(const GMM_RESOURCE_INFO *pGmmResource)
 {
+    GMM_DPF_ENTER;
     __GMM_ASSERT(pGmmResource);
     return const_cast<GMM_RESOURCE_INFO *>(pGmmResource)->GetResFlags();
 }
@@ -1388,6 +1474,7 @@ GMM_RESOURCE_FLAG GMM_STDCALL GmmResGetResourceFlags(const GMM_RESOURCE_INFO *pG
 /////////////////////////////////////////////////////////////////////////////////////
 uint32_t GMM_STDCALL GmmResGetMaximumRenamingListLength(GMM_RESOURCE_INFO *pGmmResource)
 {
+    GMM_DPF_ENTER;
     __GMM_ASSERT(pGmmResource);
     return pGmmResource->GetMaximumRenamingListLength();
 }
@@ -1410,6 +1497,7 @@ GMM_STATUS GMM_STDCALL GmmGetLogicalTileShape(uint32_t  TileMode,
                                               uint32_t *pDepth,
                                               GMM_LIB_CONTEXT *pGmmLibContext)
 {
+    GMM_DPF_ENTER;
     __GMM_ASSERT(TileMode < GMM_TILE_MODES);
 
     if(pWidthInBytes)
@@ -1440,6 +1528,7 @@ GMM_STATUS GMM_STDCALL GmmGetLogicalTileShape(uint32_t  TileMode,
 /////////////////////////////////////////////////////////////////////////////////////
 void GMM_STDCALL GmmResOverrideAllocationSize(GMM_RESOURCE_INFO *pGmmResource, GMM_GFX_SIZE_T Size)
 {
+    GMM_DPF_ENTER;
     __GMM_ASSERT(pGmmResource);
     pGmmResource->OverrideSize(Size);
 }
@@ -1453,6 +1542,7 @@ void GMM_STDCALL GmmResOverrideAllocationSize(GMM_RESOURCE_INFO *pGmmResource, G
 /////////////////////////////////////////////////////////////////////////////////////
 void GMM_STDCALL GmmResOverrideAllocationPitch(GMM_RESOURCE_INFO *pGmmResource, GMM_GFX_SIZE_T Pitch)
 {
+    GMM_DPF_ENTER;
     __GMM_ASSERT(pGmmResource);
     pGmmResource->OverridePitch(Pitch);
 }
@@ -1466,6 +1556,7 @@ void GMM_STDCALL GmmResOverrideAllocationPitch(GMM_RESOURCE_INFO *pGmmResource, 
 /////////////////////////////////////////////////////////////////////////////////////
 void GMM_STDCALL GmmResOverrideAuxAllocationPitch(GMM_RESOURCE_INFO *pGmmResource, GMM_GFX_SIZE_T Pitch)
 {
+    GMM_DPF_ENTER;
     __GMM_ASSERT(pGmmResource);
     pGmmResource->OverrideUnifiedAuxPitch(Pitch);
 }
@@ -1479,6 +1570,7 @@ void GMM_STDCALL GmmResOverrideAuxAllocationPitch(GMM_RESOURCE_INFO *pGmmResourc
 /////////////////////////////////////////////////////////////////////////////////////
 void GMM_STDCALL GmmResOverrideAllocationFlags(GMM_RESOURCE_INFO *pGmmResource, GMM_RESOURCE_FLAG *pFlags)
 {
+    GMM_DPF_ENTER;
     __GMM_ASSERT(pGmmResource);
     __GMM_ASSERT(pFlags);
     pGmmResource->OverrideAllocationFlags(*pFlags);
@@ -1493,6 +1585,7 @@ void GMM_STDCALL GmmResOverrideAllocationFlags(GMM_RESOURCE_INFO *pGmmResource, 
 /////////////////////////////////////////////////////////////////////////////////////
 void GMM_STDCALL GmmResOverrideAllocationHAlign(GMM_RESOURCE_INFO *pGmmResource, uint32_t HAlign)
 {
+    GMM_DPF_ENTER;
     __GMM_ASSERT(pGmmResource);
     pGmmResource->OverrideHAlign(HAlign);
 }
@@ -1506,6 +1599,7 @@ void GMM_STDCALL GmmResOverrideAllocationHAlign(GMM_RESOURCE_INFO *pGmmResource,
 /////////////////////////////////////////////////////////////////////////////////////
 void GMM_STDCALL GmmResOverrideAllocationBaseAlignment(GMM_RESOURCE_INFO *pGmmResource, uint32_t Alignment)
 {
+    GMM_DPF_ENTER;
     __GMM_ASSERT(pGmmResource);
     pGmmResource->OverrideBaseAlignment(Alignment);
 }
@@ -1519,6 +1613,7 @@ void GMM_STDCALL GmmResOverrideAllocationBaseAlignment(GMM_RESOURCE_INFO *pGmmRe
 /////////////////////////////////////////////////////////////////////////////////////
 void GMM_STDCALL GmmResOverrideAllocationBaseWidth(GMM_RESOURCE_INFO *pGmmResource, GMM_GFX_SIZE_T BaseWidth)
 {
+    GMM_DPF_ENTER;
     __GMM_ASSERT(pGmmResource);
     pGmmResource->OverrideBaseWidth(BaseWidth);
 }
@@ -1532,6 +1627,7 @@ void GMM_STDCALL GmmResOverrideAllocationBaseWidth(GMM_RESOURCE_INFO *pGmmResour
 /////////////////////////////////////////////////////////////////////////////////////
 void GMM_STDCALL GmmResOverrideAllocationBaseHeight(GMM_RESOURCE_INFO *pGmmResource, uint32_t BaseHeight)
 {
+    GMM_DPF_ENTER;
     __GMM_ASSERT(pGmmResource);
     pGmmResource->OverrideBaseHeight(BaseHeight);
 }
@@ -1545,6 +1641,7 @@ void GMM_STDCALL GmmResOverrideAllocationBaseHeight(GMM_RESOURCE_INFO *pGmmResou
 /////////////////////////////////////////////////////////////////////////////////////
 void GMM_STDCALL GmmResOverrideAllocationDepth(GMM_RESOURCE_INFO *pGmmResource, uint32_t Depth)
 {
+    GMM_DPF_ENTER;
     __GMM_ASSERT(pGmmResource);
     pGmmResource->OverrideDepth(Depth);
 }
@@ -1558,6 +1655,7 @@ void GMM_STDCALL GmmResOverrideAllocationDepth(GMM_RESOURCE_INFO *pGmmResource, 
 /////////////////////////////////////////////////////////////////////////////////////
 void GMM_STDCALL GmmResOverrideResourceTiling(GMM_RESOURCE_INFO *pGmmResource, uint32_t TileMode)
 {
+    GMM_DPF_ENTER;
     __GMM_ASSERT(pGmmResource);
     pGmmResource->OverrideTileMode(static_cast<GMM_TILE_MODE>(TileMode));
 }
@@ -1571,6 +1669,7 @@ void GMM_STDCALL GmmResOverrideResourceTiling(GMM_RESOURCE_INFO *pGmmResource, u
 /////////////////////////////////////////////////////////////////////////////////////
 void GMM_STDCALL GmmResOverrideAuxResourceTiling(GMM_RESOURCE_INFO *pGmmResource, uint32_t TileMode)
 {
+    GMM_DPF_ENTER;
     __GMM_ASSERT(pGmmResource);
     pGmmResource->OverrideUnifiedAuxTileMode(static_cast<GMM_TILE_MODE>(TileMode));
 }
@@ -1584,6 +1683,7 @@ void GMM_STDCALL GmmResOverrideAuxResourceTiling(GMM_RESOURCE_INFO *pGmmResource
 /////////////////////////////////////////////////////////////////////////////////////
 void GMM_STDCALL GmmResOverrideAllocationFormat(GMM_RESOURCE_INFO *pGmmResource, GMM_RESOURCE_FORMAT Format)
 {
+    GMM_DPF_ENTER;
     __GMM_ASSERT(pGmmResource);
     pGmmResource->OverrideSurfaceFormat(Format);
 }
@@ -1597,6 +1697,7 @@ void GMM_STDCALL GmmResOverrideAllocationFormat(GMM_RESOURCE_INFO *pGmmResource,
 /////////////////////////////////////////////////////////////////////////////////////
 void GMM_STDCALL GmmResOverrideSurfaceType(GMM_RESOURCE_INFO *pGmmResource, GMM_RESOURCE_TYPE ResourceType)
 {
+    GMM_DPF_ENTER;
     __GMM_ASSERT(pGmmResource);
     pGmmResource->OverrideSurfaceType(ResourceType);
 }
@@ -1611,6 +1712,7 @@ void GMM_STDCALL GmmResOverrideSurfaceType(GMM_RESOURCE_INFO *pGmmResource, GMM_
 /////////////////////////////////////////////////////////////////////////////////////
 void GMM_STDCALL GmmResOverrideSvmGfxAddress(GMM_RESOURCE_INFO *pGmmResource, GMM_GFX_ADDRESS SvmGfxAddress)
 {
+    GMM_DPF_ENTER;
     __GMM_ASSERT(pGmmResource);
     pGmmResource->OverrideSvmGfxAddress(SvmGfxAddress);
 }
@@ -1624,6 +1726,7 @@ void GMM_STDCALL GmmResOverrideSvmGfxAddress(GMM_RESOURCE_INFO *pGmmResource, GM
 /////////////////////////////////////////////////////////////////////////////////////
 void GMM_STDCALL GmmResOverrideAllocationArraySize(GMM_RESOURCE_INFO *pGmmResource, uint32_t ArraySize)
 {
+    GMM_DPF_ENTER;
     __GMM_ASSERT(pGmmResource);
     pGmmResource->OverrideArraySize(ArraySize);
 }
@@ -1637,6 +1740,7 @@ void GMM_STDCALL GmmResOverrideAllocationArraySize(GMM_RESOURCE_INFO *pGmmResour
 /////////////////////////////////////////////////////////////////////////////////////
 void GMM_STDCALL GmmResOverrideAllocationMaxLod(GMM_RESOURCE_INFO *pGmmResource, uint32_t MaxLod)
 {
+    GMM_DPF_ENTER;
     __GMM_ASSERT(pGmmResource);
     pGmmResource->OverrideMaxLod(MaxLod);
 }
@@ -1651,6 +1755,7 @@ void GMM_STDCALL GmmResOverrideAllocationMaxLod(GMM_RESOURCE_INFO *pGmmResource,
 /////////////////////////////////////////////////////////////////////////////////////
 GMM_GFX_SIZE_T GMM_STDCALL GmmResGetPlanarGetXOffset(GMM_RESOURCE_INFO *pGmmResource, GMM_YUV_PLANE Plane)
 {
+    GMM_DPF_ENTER;
     __GMM_ASSERT(pGmmResource);
     return pGmmResource->GetPlanarXOffset(Plane);
 }
@@ -1665,6 +1770,7 @@ GMM_GFX_SIZE_T GMM_STDCALL GmmResGetPlanarGetXOffset(GMM_RESOURCE_INFO *pGmmReso
 /////////////////////////////////////////////////////////////////////////////////////
 GMM_GFX_SIZE_T GMM_STDCALL GmmResGetPlanarGetYOffset(GMM_RESOURCE_INFO *pGmmResource, GMM_YUV_PLANE Plane)
 {
+    GMM_DPF_ENTER;
     __GMM_ASSERT(pGmmResource);
     return pGmmResource->GetPlanarYOffset(Plane);
 }
@@ -1679,6 +1785,7 @@ GMM_GFX_SIZE_T GMM_STDCALL GmmResGetPlanarGetYOffset(GMM_RESOURCE_INFO *pGmmReso
 /////////////////////////////////////////////////////////////////////////////////////
 GMM_GFX_SIZE_T GMM_STDCALL GmmResGetPlanarAuxOffset(GMM_RESOURCE_INFO *pGmmResource, uint32_t ArrayIndex, GMM_UNIFIED_AUX_TYPE AuxType)
 {
+    GMM_DPF_ENTER;
     __GMM_ASSERT(pGmmResource);
     return pGmmResource->GetPlanarAuxOffset(ArrayIndex, AuxType);
 }
@@ -1692,6 +1799,7 @@ GMM_GFX_SIZE_T GMM_STDCALL GmmResGetPlanarAuxOffset(GMM_RESOURCE_INFO *pGmmResou
 /////////////////////////////////////////////////////////////////////////////////////
 void GMM_STDCALL GmmResSetLibContext(GMM_RESOURCE_INFO *pGmmResource, void *pLibContext)
 {
+    GMM_DPF_ENTER;
     if(pGmmResource)
     {
         pGmmResource->SetGmmLibContext(pLibContext);
@@ -1712,6 +1820,7 @@ void GMM_STDCALL GmmResSetLibContext(GMM_RESOURCE_INFO *pGmmResource, void *pLib
 //-----------------------------------------------------------------------------
 uint8_t __CanSupportStdTiling(GMM_TEXTURE_INFO Surf, GMM_LIB_CONTEXT *pGmmLibContext)
 {
+    GMM_DPF_ENTER;
     const __GMM_PLATFORM_RESOURCE *pPlatformResource = GMM_OVERRIDE_PLATFORM_INFO(&Surf, pGmmLibContext);
 
     // SKL+ Tiled Resource Mode Restrictions

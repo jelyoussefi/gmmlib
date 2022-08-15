@@ -39,6 +39,7 @@ OTHER DEALINGS IN THE SOFTWARE.
 //-----------------------------------------------------------------------------
 int32_t GmmLib::GmmGen11CachePolicy::IsSpecialMOCSUsage(GMM_RESOURCE_USAGE_TYPE Usage, bool &UpdateMOCS)
 {
+    GMM_DPF_ENTER;
     int32_t MocsIdx = -1;
     UpdateMOCS      = true;
 
@@ -75,6 +76,7 @@ int32_t GmmLib::GmmGen11CachePolicy::IsSpecialMOCSUsage(GMM_RESOURCE_USAGE_TYPE 
 //-----------------------------------------------------------------------------
 GMM_STATUS GmmLib::GmmGen11CachePolicy::InitCachePolicy()
 {
+    GMM_DPF_ENTER;
     __GMM_ASSERTPTR(pCachePolicy, GMM_ERROR);
 
 #define DEFINE_CACHE_ELEMENT(usage, llc, ellc, l3, wt, age, aom, lecc_scc, l3_scc, scf, sso, cos) DEFINE_CP_ELEMENT(usage, llc, ellc, l3, wt, age, aom, lecc_scc, l3_scc, scf, sso, cos, 0, 0, 0, 0, 0, 0)
@@ -294,6 +296,7 @@ GMM_STATUS GmmLib::GmmGen11CachePolicy::InitCachePolicy()
 //-----------------------------------------------------------------------------
 void GmmLib::GmmGen11CachePolicy::SetUpMOCSTable()
 {
+    GMM_DPF_ENTER;
     GMM_CACHE_POLICY_TBL_ELEMENT *pCachePolicyTlbElement = &(pGmmLibContext->GetCachePolicyTlbElement()[0]);
 
 #define GMM_DEFINE_MOCS(Index, L3_ESC, L3_SCC, L3_CC, LeCC_CC, LeCC_TC, LeCC_LRUM, LeCC_AOM, LeCC_ESC, LeCC_SCC, LeCC_PFM, LeCC_SCF, LeCC_CoS, LeCC_SelfSnoop) \
