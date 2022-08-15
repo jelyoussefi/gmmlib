@@ -88,7 +88,6 @@ bool GmmLib::Logger::GmmLogInit()
 
     if(Utility::GmmUMDReadRegistryFullPath(GMM_LOG_REG_KEY_SUB_PATH, GMM_LOG_LEVEL_REGKEY, &regkeyVal))
     {
-        printf("----------------- %s\n", __FUNCTION__);
         switch(static_cast<GmmLogLevel>(regkeyVal))
         {
             case Trace:
@@ -293,7 +292,7 @@ extern "C" void GMM_STDCALL GmmLibLogging(GmmLogLevel Level, const char *str, ..
 #else
             vsnprintf(temp, length + 1, str, args);
 #endif
-	printf("%s\n", temp);
+
             switch(Level)
             {
                 case Trace:
